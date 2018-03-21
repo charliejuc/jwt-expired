@@ -9,7 +9,11 @@ module.exports = function jwtExpired (config) {
 
 	function encode (payload, secret_key) {
 		secret_key = secret_key || config.secret_key
-		payload['createdAt'] = Date.now()
+
+		if ( payload.expSecs ) {
+			payload['expiredAt'] = Date.now() + payload.expSecs * 1000
+		}
+
 		return jwt.encode(payload, secret_key, config.encode_algo)
 	}
 
@@ -18,14 +22,14 @@ module.exports = function jwtExpired (config) {
 		return jwt.decode(token, secret_key, false, config.encode_algo)
 	}
 
-	function expired(token, secret_key) {
+	function expired (token, secret_key) {
 		let payload = decode(token, secret_key)
 
-		if ( ! payload.expSecs ) {
+		if ( ! payload.expiredAt ) {
 			return false
 		}
 
-		return Date.now() >= payload.createdAt + payload.expSecs * 1000
+		return Date.now() >= payload.expiredAt
 	}
 
 	return {
