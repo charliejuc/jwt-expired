@@ -6,7 +6,7 @@
 ##Usage
 ~~~
 const secret_key = 'cyTofmf+llaw2fGWxFyGGZSsYXiEmOBAvmQ92O1alZdNpPjS239VpsABI53CmvHkeIcK'
-const jwtExpired = require('./custom_modules/jwt-expired')({
+const jwtExpired = require('jwt-expired')({
 	encode_algo: 'HS512', //default => HS256
 	secret_key,
 })
