@@ -27,7 +27,7 @@ console.log(jwtExpired.expired(token))
 //>>> false
 
 setTimeout(() => {
-	//5 seconds after
+	//seconds after
 	console.log(jwtExpired.expired(token))
 	//>>> true
 }, 2000)

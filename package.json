@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/charliejuc/jwt-expired/issues"
   },
-  "homepage": "https://github.com/charliejuc/jwt-expired#readme"
+  "homepage": "https://github.com/charliejuc/jwt-expired#readme",
+  "dependencies": {
+    "jwt-simple": "^0.5.1"
+  }
 }
